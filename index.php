@@ -1,23 +1,26 @@
 <?php
-    require "vendor/autoload.php";
-?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+//Turn on error reporting
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-    <?php
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL | E_STRICT);
-    ?>
+//Require autoload
+require_once('vendor/autoload.php');
 
-</head>
-<body>
+//create an instance of the Base class
+$f3 = Base::instance();
 
-</body>
-</html>
+//Turn on fat free error reporting
+$f3->set('DEBUG', 3);
+
+//Define route
+$f3->route('GET /',
+    function() {
+        echo '<h1>Pet Home</h1>';
+        //$view  new View;
+        //echo $view->render('views/home-page.html');
+    }
+);
+
+//Run fat free
+$f3->run();>
